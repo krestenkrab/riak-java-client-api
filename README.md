@@ -12,7 +12,7 @@ All of these leak their abstractions and force the user to make an upfront choic
 Some people don't like  Apache HttpClient, and that is fair enough, so it would be ideal if we didn't force it on those people. Better yet make it easy to create new implementations for the transport (using Netty or RestTemplate or what-have-you).
 
 ## What am I doing?
-In an attempt to alliviate this I'm attempting to design a simple API (and SPI (more later)) so that we can use the riak-java-client and not have to be concerened with the underlying transport, serialization format and other implementation trivia. Which is good, 'cos you *really want* to use the protobufs client.
+I'm attempting to design a simple API (and SPI (more later)) so that we can use the riak-java-client and not have to be concerened with the underlying transport, serialization format and other implementation trivia. Which is good, 'cos you *really want* to use the protobufs client.
 
 ## What can *you* do?
 This repo is a request for comments. It is just a  starting point and I'll be pushing a lot over the next few days, but I'd really appreciate any riak Java client users (past, present or future) to look over this API and let me know your thoughts. It is, hopefully, the bare minimum API that is needed to speak to riak. Please contact me however you like[1] but ideally the [riak-users mailing list](http://lists.basho.com/mailman/listinfo/riak-users_lists.basho.com) so the discussion is public and archived.
