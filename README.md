@@ -29,7 +29,7 @@ With the feedback garnered hopefully I can start working the client into the new
 
 [1] alt. contact
 
-* #riak on freenode
+* \#riak on freenode
 * the wiki for this repo
 * pull requests
 * [twitter](http://twitter.com/#!/russelldb)
