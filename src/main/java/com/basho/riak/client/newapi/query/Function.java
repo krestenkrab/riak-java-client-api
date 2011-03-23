@@ -11,10 +11,12 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.basho.riak.client.newapi;
+package com.basho.riak.client.newapi.query;
 
 /**
+ * Marker interface for a function.
+ * 
  * @author russell
  *
  */
-public interface NamedFunction extends Function {}
+public interface Function {}

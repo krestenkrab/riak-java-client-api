@@ -13,28 +13,33 @@
  */
 package com.basho.riak.client.newapi;
 
+
 /**
- * Tunable CAP properties on a fetch operation.
+ * Builds RiakObjects
  * 
  * @author russell
  * 
  */
-public final class FetchCAP {
-    private final Integer r;
+public class RiakObjectBuilder implements Builder<RiakObject> {
 
-    public FetchCAP(int r) {
-        this.r = r;
+    private final String bucket;
+    private final String key;
+
+    private RiakObjectBuilder(String bucket, String key) {
+        this.bucket = bucket;
+        this.key = key;
     }
 
-    /**
-     * @return the r
-     */
-    public int getR() {
-        return r;
+    public static RiakObjectBuilder newBuilder(String bucket, String key) {
+        return new RiakObjectBuilder(bucket, key);
+    }
+    
+    public static RiakObjectBuilder from(RiakObject o) {
+        return new RiakObjectBuilder(o.getBucketName(), o.getKey());
     }
 
-    public static FetchCAP r(int r) {
-        return new FetchCAP(r);
+    public RiakObject build() {
+        return null;
     }
 
 }

@@ -11,12 +11,20 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.basho.riak.client.newapi;
+package com.basho.riak.client.newapi.itest;
+
+import org.junit.Test;
 
 /**
+ * Puts the bucket through its paces.
+ * 
  * @author russell
  *
  */
-public interface VClock {
+public class ITestBucket {
+    
+    @Test public void getBucketProperties() {
+        
+    }
 
 }

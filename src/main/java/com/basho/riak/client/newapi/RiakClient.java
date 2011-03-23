@@ -13,8 +13,12 @@
  */
 package com.basho.riak.client.newapi;
 
+import java.io.IOException;
 import java.util.Collection;
 
+import com.basho.riak.client.newapi.cap.DeleteCAP;
+import com.basho.riak.client.newapi.cap.FetchCAP;
+import com.basho.riak.client.newapi.cap.StoreCAP;
 import com.basho.riak.client.newapi.query.MapReduceResult;
 import com.basho.riak.client.newapi.query.MapReduceSpec;
 import com.basho.riak.client.newapi.query.WalkResult;
@@ -29,25 +33,25 @@ import com.basho.riak.client.newapi.query.WalkSpec;
 public interface RiakClient extends Iterable<Bucket> {
 
     // server misc.
-    void setClientId(String clientId);
+    void setClientId(String clientId) throws IOException;
 
-    void ping();
+    void ping() throws IOException;
 
-    RiakServerInfo getServerInfo();
+    RiakServerInfo getServerInfo() throws IOException;
 
     // buckets
-    Bucket fetchBucket(String bucketName);
+    Bucket fetchBucket(String bucketName) throws IOException;
 
-    void updateBucket(final Bucket bucket);
+    void updateBucket(final Bucket bucket) throws IOException;
 
     // store
-    void store(final RiakObject riakObject);
+    void store(final RiakObject riakObject) throws IOException;
 
-    void store(final RiakObject riakObject, final StoreCAP storeCAP);
+    void store(final RiakObject riakObject, final StoreMeta storeMeta) throws IOException;
 
-    RiakObject storeAndReturn(final RiakObject riakObject);
+    RiakObject storeAndReturn(final RiakObject riakObject) throws IOException;
 
-    RiakObject storeAndReturn(final RiakObject riakObject, final StoreCAP storeCAP);
+    RiakObject storeAndReturn(final RiakObject riakObject, final StoreMeta storeMeta);
 
     // bulk store
     void store(final Iterable<RiakObject> riakObjects);
@@ -56,7 +60,7 @@ public interface RiakClient extends Iterable<Bucket> {
 
     Collection<RiakObject> storeAndReturn(final Iterable<RiakObject> riakObjects);
 
-    Collection<RiakObject> storeAndReturn(final Iterable<RiakObject> riakObjects, final StoreCAP storeCAP);
+    Collection<RiakObject> storeAndReturn(final Iterable<RiakObject> riakObjects, final StoreMeta storeMeta);
 
     // fetch
     RiakObject fetch(final RiakObject riakObject);
@@ -78,7 +82,7 @@ public interface RiakClient extends Iterable<Bucket> {
 
     void delete(final Bucket bucket, String key);
 
-    void delete(final Bucket bucket, String key, final DeleteCAP deleteCAP);
+    void delete(final DefaultBucket bucket, String key, final DeleteCAP deleteCAP);
 
     void delete(final String bucket, String key);
 

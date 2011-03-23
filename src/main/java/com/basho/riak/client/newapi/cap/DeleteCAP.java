@@ -11,12 +11,29 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.basho.riak.client.newapi;
+package com.basho.riak.client.newapi.cap;
 
 /**
- * Marker interface for a function.
+ * Per request tunable CAP settings for a delete operation.
  * 
  * @author russell
- *
+ * 
  */
-public interface Function {}
+public final class DeleteCAP {
+    private final Integer rw;
+
+    public DeleteCAP(int rw) {
+        this.rw = rw;
+    }
+
+    /**
+     * @return the rw
+     */
+    public int getRw() {
+        return rw;
+    }
+    
+    public static DeleteCAP rw(int rw) {
+        return new DeleteCAP(rw);
+    }
+}

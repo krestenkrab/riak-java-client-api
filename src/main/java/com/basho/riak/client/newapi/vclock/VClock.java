@@ -11,41 +11,12 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.basho.riak.client.newapi;
-
-import java.util.Collection;
-import java.util.Date;
-import java.util.Map;
-
-import com.basho.riak.client.newapi.vclock.VClock;
+package com.basho.riak.client.newapi.vclock;
 
 /**
- * Models a RiakObject
- * 
  * @author russell
- * 
+ *
  */
-public interface RiakObject extends Iterable<RiakLink> {
-    
-    Bucket getBucket();
+public interface VClock {
 
-    VClock getVClock();
-
-    boolean hasConflict();
-
-    Collection<RiakObject> getSiblings();
-
-    String getKey();
-
-    String getVtag();
-
-    Date getLastModified();
-
-    String getContentType();
-
-    Map<String, String> getMeta();
-
-    String getBucketName();
-
-    String getValue();
 }

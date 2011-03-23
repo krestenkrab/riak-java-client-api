@@ -11,50 +11,63 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.basho.riak.client.newapi;
+package com.basho.riak.client.newapi.cap;
 
 /**
- * Per request tunable cap settings for a store operation.
+ * The set of CAP properties for a bucket.
+ * 
+ * Immutable.
  * 
  * @author russell
  * 
  */
-public final class StoreCAP {
-    private final Integer w;
-    private final Integer dw;
+public class CAPQuora {
 
-    public StoreCAP(int w, int dw) {
-        this(Integer.valueOf(w), Integer.valueOf(dw));
-    }
+    private final Quorum r;
+    private final Quorum w;
+    private final Quorum dw;
+    private final Quorum rw;
 
-    private StoreCAP(Integer w, Integer dw) {
+    public CAPQuora(Quorum r, Quorum w, Quorum dw, Quorum rw) {
+        this.r = r;
         this.w = w;
         this.dw = dw;
+        this.rw = rw;
+    }
+
+    /**
+     * @return the r
+     */
+    public Quorum getR() {
+        return r;
     }
 
     /**
      * @return the w
      */
-    public Integer getW() {
+    public Quorum getW() {
         return w;
     }
 
     /**
      * @return the dw
      */
-    public Integer getDw() {
+    public Quorum getDW() {
         return dw;
     }
 
-    public static StoreCAP wdw(int w, int dw) {
-        return new StoreCAP(w, dw);
+    /**
+     * @return the rw
+     */
+    public Quorum getRW() {
+        return rw;
     }
 
-    public static StoreCAP w(int w) {
-        return new StoreCAP(w, null);
+    public static CAPQuoraBuilder from(CAPQuora capQuora) {
+        return CAPQuoraBuilder.from(capQuora);
     }
-
-    public static StoreCAP dw(int dw) {
-        return new StoreCAP(null, dw);
+    
+    public CAPQuoraBuilder fromMe() {
+        return CAPQuora.from(this);
     }
 }

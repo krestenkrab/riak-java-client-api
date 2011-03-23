@@ -11,7 +11,10 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.basho.riak.client.newapi;
+package com.basho.riak.client.newapi.vclock;
+
+import com.basho.riak.client.newapi.BucketProperties;
+import com.basho.riak.client.newapi.Builder;
 
 /**
  * Build a {@link VClockPruning}.
@@ -21,15 +24,24 @@ package com.basho.riak.client.newapi;
  */
 public class VClockPruneBuilder implements Builder<VClockPruning> {
 
-    private int smallVClock = 10;
-    private int bigVClock = 50;
-    private long youngVClock = 20;
-    private long oldVClock = 86400;
+    private Integer smallVClock; //= 10;
+    private Integer bigVClock; //= 50;
+    private Long youngVClock; //= 20;
+    private Long oldVClock; //= 86400;
 
     public VClockPruning build() {
         return new VClockPruning(smallVClock, bigVClock, youngVClock, oldVClock);
     }
 
+    public static VClockPruneBuilder from(BucketProperties properties) {
+        final VClockPruneBuilder builder = new VClockPruneBuilder();
+        builder.smallVClock = properties.getSmallVClock();
+        builder.bigVClock = properties.getBigVClock();
+        builder.youngVClock = properties.getYoungVClock();
+        builder.oldVClock = properties.getOldVClock();
+        return builder;
+    }
+    
     public static VClockPruneBuilder from(VClockPruning prototype) {
         final VClockPruneBuilder builder = new VClockPruneBuilder();
         builder.smallVClock = prototype.getSmall();
@@ -58,9 +70,8 @@ public class VClockPruneBuilder implements Builder<VClockPruning> {
         return this;
     }
 
-    public VClockPruneBuilder oldVClock(int oldVClock) {
+    public VClockPruneBuilder oldVClock(long oldVClock) {
         this.oldVClock = oldVClock;
         return this;
     }
-
 }

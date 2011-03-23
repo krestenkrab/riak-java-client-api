@@ -11,10 +11,29 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.basho.riak.client.newapi;
+package com.basho.riak.client.newapi.cap;
 
 /**
+ * Enum for bucket level CAP properties.
+ * 
+ * r/w/dw/rw values for a bucket
+ * 
+ * ALL: every node
+ * ONE: any one node
+ * QUORUM: default, any nNval / 2 + 1 nodes
+ * OTHER: any specified int value that is less than nVal nodes
+ * 
+ * TODO not happy with this at all, either it is an int or a symbolic value, hm
+ * 
  * @author russell
  *
  */
-public interface AnonymousFunction extends Function {}
+public enum Quorum {
+    ALL, ONE, QUORUM, OTHER;
+    
+    private int intVal;
+    
+    public int toInt() {
+        return this.intVal;
+    }
+}

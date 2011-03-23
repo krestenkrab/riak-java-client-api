@@ -11,29 +11,30 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.basho.riak.client.newapi;
+package com.basho.riak.client.newapi.cap;
 
 /**
- * Per request tunable CAP settings for a delete operation.
+ * Tunable CAP properties on a fetch operation.
  * 
  * @author russell
  * 
  */
-public final class DeleteCAP {
-    private final Integer rw;
+public final class FetchCAP {
+    private final Integer r;
 
-    public DeleteCAP(int rw) {
-        this.rw = rw;
+    public FetchCAP(int r) {
+        this.r = r;
     }
 
     /**
-     * @return the rw
+     * @return the r
      */
-    public int getRw() {
-        return rw;
+    public int getR() {
+        return r;
     }
-    
-    public static DeleteCAP rw(int rw) {
-        return new DeleteCAP(rw);
+
+    public static FetchCAP r(int r) {
+        return new FetchCAP(r);
     }
+
 }

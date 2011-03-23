@@ -11,7 +11,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.basho.riak.client.newapi;
+package com.basho.riak.client.newapi.query;
 
 /**
  * Models a named erlang function.

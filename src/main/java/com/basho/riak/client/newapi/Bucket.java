@@ -15,13 +15,18 @@ package com.basho.riak.client.newapi;
 
 import java.util.Collection;
 
+import com.basho.riak.client.newapi.cap.Quorum;
+import com.basho.riak.client.newapi.query.NamedErlangFunction;
+import com.basho.riak.client.newapi.query.NamedFunction;
+
 /**
  * Models a Riak Bucket.
  * 
  * @author russell
  *
  */
-public interface Bucket extends Iterable<RiakObject> {
+public interface Bucket extends Iterable<String> {
+    String getName();
     boolean isAllowSiblings();
     boolean isLastWriteWins();
     int getNVal();

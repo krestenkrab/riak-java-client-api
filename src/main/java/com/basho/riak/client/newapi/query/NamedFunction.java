@@ -11,18 +11,10 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.basho.riak.client.newapi;
+package com.basho.riak.client.newapi.query;
 
 /**
  * @author russell
  *
  */
-public enum Quorum {
-    ALL, ONE, QUORUM, OTHER;
-    
-    private int intVal;
-    
-    public int toInt() {
-        return this.intVal;
-    }
-}
+public interface NamedFunction extends Function {}
