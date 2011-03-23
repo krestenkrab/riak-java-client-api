@@ -21,7 +21,7 @@ import java.util.Collection;
  * @author russell
  *
  */
-public interface Bucket extends Iterable<RiakObject> {
+public interface Bucket extends Iterable<String> {
     boolean isAllowSiblings();
     boolean isLastWriteWins();
     int getNVal();
